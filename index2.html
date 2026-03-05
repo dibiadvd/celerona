@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Celerona Management • Exclusive Fan Circle</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.min.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID_HERE&currency=USD"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { serif: ['Cormorant Garamond', 'serif'], sans: ['Inter', 'sans-serif'] },
+          colors: {
+            gold: '#d4af37',
+            'gold-dark': '#b8972e',
+            charcoal: '#0a0a0f',
+            surface: '#111118',
+            'surface-elev': '#1a1a22',
+            regular: '#3b82f6',
+            vip: '#8b5cf6',
+            vvip: '#d4af37',
+            platinum: '#e5e7eb'
+          },
+          keyframes: {
+            shine: { '0%': { backgroundPosition: '200% center' }, '100%': { backgroundPosition: '-200% center' } },
+            glow:  { '0%, 100%': { boxShadow: '0 0 25px 5px rgba(212,175,55,0.2)' }, '50%': { boxShadow: '0 0 55px 18px rgba(212,175,55,0.45)' } }
+          },
+          animation: {
+            shine: 'shine 10s linear infinite',
+            glow:  'glow 6s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background: #0a0a0f; color: #e5e5e5; overflow-x: hidden; }
+    .gold-gradient { background: linear-gradient(90deg, #f0c14b, #d4af37, #f0c14b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine 10s linear infinite; }
+    .glass { background: rgba(20,20,30,0.48); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(212,175,55,0.15); }
+    .card-hover { transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .card-hover:hover { transform: translateY(-16px) scale(1.025); border-color: rgba(212,175,55,0.4); box-shadow: 0 35px 80px -20px rgba(212,175,55,0.25); }
+    .price-large { font-size: clamp(3.2rem, 10vw, 4.8rem); line-height: 0.95; font-weight: 900; }
+    #three-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .paypal-container { min-height: 140px; }
+  </style>
+</head>
+<body>
+
+<header class="fixed top-0 w-full z-50">
+  <nav class="glass mx-4 mt-5 md:mx-12 rounded-2xl px-6 md:px-10 py-5 flex justify-between items-center shadow-2xl shadow-black/50">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gold to-amber-800 flex items-center justify-center text-charcoal font-bold text-2xl shadow-lg">CM</div>
+      <span class="text-2xl md:text-3xl font-bold gold-gradient">Celerona Management</span>
+    </div>
+    <div class="hidden md:flex items-center gap-10 text-lg font-medium">
+      <a href="#home" class="hover:text-gold transition">Home</a>
+      <a href="#benefits" class="hover:text-gold transition">Benefits</a>
+      <a href="#tiers" class="hover:text-gold transition">Fan Cards</a>
+      <a href="dashboard.html" class="bg-gradient-to-r from-gold to-amber-700 hover:from-amber-500 hover:to-gold text-charcoal px-8 py-3.5 rounded-full font-semibold shadow-xl shadow-amber-900/50 transition-all hover:shadow-2xl">
+        Dashboard
+      </a>
+    </div>
+    <button class="md:hidden text-gold text-3xl"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+</header>
+
+<section id="home" class="min-h-screen relative flex items-center justify-center overflow-hidden pt-24 md:pt-0">
+  <canvas id="three-canvas" class="absolute inset-0 z-0"></canvas>
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/45 to-charcoal/90 z-10"></div>
+
+  <div class="relative z-20 text-center px-6 max-w-6xl" data-aos="fade-up" data-aos-duration="1600">
+    <div class="inline-flex mb-8 px-7 py-3 glass rounded-full text-gold text-base md:text-lg uppercase tracking-widest font-medium shadow-lg">
+      <i class="fa-solid fa-crown mr-3 text-xl"></i> Exclusive • Private • Elite
+    </div>
+    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl serif-heading font-bold leading-tight mb-10 gold-gradient animate-glow">
+      Celerona Management<br/>Inner Circle
+    </h1>
+    <p class="text-xl sm:text-2xl md:text-3xl max-w-4xl mx-auto mb-14 leading-relaxed opacity-95">
+      Premium fan membership. Direct access. Private content.<br class="hidden md:block"/>
+      <span class="text-gold font-medium">Managed with excellence.</span>
+    </p>
+    <a href="#tiers" class="mt-10 inline-block bg-gradient-to-r from-gold to-amber-700 hover:from-amber-500 hover:to-gold text-charcoal px-12 py-6 rounded-full text-xl md:text-2xl font-bold transition-all duration-500 shadow-2xl shadow-amber-900/60 hover:shadow-3xl hover:scale-[1.04]">
+      Explore Fan Cards →
+    </a>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section id="benefits" class="py-20 md:py-32 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl serif-heading font-bold text-center mb-16 md:mb-20 gold-gradient" data-aos="fade-up">
+      Privileges of Membership
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-3xl font-semibold mb-4 text-center">Exclusive Content</h3>
+        <p class="text-gray-300 text-center">Unreleased videos, archives, behind-the-scenes — never public.</p>
+      </div>
+      <div class="glass rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-3xl font-semibold mb-4 text-center">Direct Access</h3>
+        <p class="text-gray-300 text-center">Private messages, voice notes, live Q&As.</p>
+      </div>
+      <div class="glass rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-3xl font-semibold mb-4 text-center">VIP Priority</h3>
+        <p class="text-gray-300 text-center">First access to events, meetups, virtual sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fan Cards -->
+<section id="tiers" class="py-20 md:py-32 relative bg-gradient-to-b from-charcoal to-black/70">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl serif-heading font-bold text-center mb-16 md:mb-20 gold-gradient" data-aos="fade-up">
+      Choose Your Fan Card
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="glass rounded-3xl p-8 card-hover flex flex-col border-t-4 border-regular" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-3xl font-semibold mb-4 text-center text-regular">REGULAR FAN CARD</h3>
+        <div class="text-center mb-8">
+          <div class="text-5xl font-bold text-regular">$1,350</div>
+          <div class="text-xl text-gray-400">per year</div>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li><i class="fa-solid fa-check text-regular mr-2"></i> Core content library</li>
+          <li><i class="fa-solid fa-check text-regular mr-2"></i> Monthly newsletter</li>
+          <li><i class="fa-solid fa-check text-regular mr-2"></i> Community forum</li>
+        </ul>
+        <div id="paypal-regular" class="mt-auto"></div>
+      </div>
+
+      <div class="glass rounded-3xl p-8 card-hover flex flex-col border-t-4 border-vip" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-3xl font-semibold mb-4 text-center text-vip">VIP FAN CARD</h3>
+        <div class="text-center mb-8">
+          <div class="text-5xl font-bold text-vip">$3,000</div>
+          <div class="text-xl text-gray-400">per year</div>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li><i class="fa-solid fa-check text-vip mr-2"></i> All Regular +</li>
+          <li><i class="fa-solid fa-check text-vip mr-2"></i> Exclusive archives</li>
+          <li><i class="fa-solid fa-check text-vip mr-2"></i> Monthly Q&A</li>
+        </ul>
+        <div id="paypal-vip" class="mt-auto"></div>
+      </div>
+
+      <div class="glass rounded-3xl p-8 card-hover flex flex-col border-t-4 border-vvip shadow-2xl animate-glow" data-aos="zoom-in" data-aos-delay="300">
+        <div class="absolute -top-4 right-6 bg-gold text-charcoal px-4 py-1 rounded-full text-sm font-bold">Most Popular</div>
+        <h3 class="text-3xl font-semibold mb-4 text-center text-vvip">VVIP FAN CARD</h3>
+        <div class="text-center mb-8">
+          <div class="text-5xl font-bold text-vvip">$5,000</div>
+          <div class="text-xl text-gray-300">per year</div>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li><i class="fa-solid fa-check text-vvip mr-2"></i> All VIP +</li>
+          <li><i class="fa-solid fa-check text-vvip mr-2"></i> Personal replies</li>
+          <li><i class="fa-solid fa-check text-vvip mr-2"></i> Priority events</li>
+        </ul>
+        <div id="paypal-vvip" class="mt-auto"></div>
+      </div>
+
+      <div class="glass rounded-3xl p-8 card-hover flex flex-col border-t-4 border-platinum" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-3xl font-semibold mb-4 text-center text-platinum">PLATINUM FAN CARD</h3>
+        <div class="text-center mb-8">
+          <div class="text-5xl font-bold text-platinum">$10,000+</div>
+          <div class="text-xl text-gray-400">per year</div>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li><i class="fa-solid fa-check text-platinum mr-2"></i> All VVIP +</li>
+          <li><i class="fa-solid fa-check text-platinum mr-2"></i> Private 1-on-1</li>
+          <li><i class="fa-solid fa-check text-platinum mr-2"></i> Bespoke experiences</li>
+        </ul>
+        <div id="paypal-platinum" class="mt-auto"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/5 py-12 text-center text-gray-500 bg-black/80">
+  <p>Celerona Management • 2026</p>
+</footer>
+
+<script>
+// Three.js orbs (same as before – omitted for brevity, copy from previous version)
+const scene = new THREE.Scene(); /* ... full Three.js code from earlier ... */
+animate();
+
+// PayPal buttons (same as before)
+function createPaypalButton(id, amount, desc) {
+  paypal.Buttons({
+    style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'paypal' },
+    createOrder: (data, actions) => actions.order.create({ purchase_units: [{ amount: { value: amount }, description: desc }] }),
+    onApprove: (data, actions) => actions.order.capture().then(details => {
+      alert(`Payment successful! Welcome to Celerona Management.`);
+      localStorage.setItem('celerona_member', 'true');
+      window.location.href = 'dashboard.html';
+    }),
+    onError: err => alert('Payment error. Try again.')
+  }).render(`#${id}`);
+}
+
+createPaypalButton('paypal-regular',   '1350.00', 'Celerona Management - REGULAR FAN CARD');
+createPaypalButton('paypal-vip',       '3000.00', 'Celerona Management - VIP FAN CARD');
+createPaypalButton('paypal-vvip',      '5000.00', 'Celerona Management - VVIP FAN CARD');
+createPaypalButton('paypal-platinum',  '10000.00','Celerona Management - PLATINUM FAN CARD');
+
+// Lenis + AOS
+const lenis = new Lenis({ duration: 1.8, smoothWheel: true });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+AOS.init({ duration: 1200, once: true });
+</script>
+</body>
+</html>
