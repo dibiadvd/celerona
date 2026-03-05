@@ -3,40 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membership Tiers</title>
+    <title>Celerona</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Membership Tiers</h1>
+        <h1>Welcome to Celerona</h1>
     </header>
     <main>
-        <section class="membership-grid">
-            <div class="tier">
-                <h2>Basic</h2>
-                <p>Price: $1350</p>
-                <p>Features: Access to the basic content.</p>
-            </div>
-            <div class="tier">
-                <h2>Standard</h2>
-                <p>Price: $2000</p>
-                <p>Features: Access to standard content and features.</p>
-            </div>
-            <div class="tier">
-                <h2>Premium</h2>
-                <p>Price: $3500</p>
-                <p>Features: Access to premium content and features.</p>
-            </div>
-            <div class="tier">
-                <h2>Elite</h2>
-                <p>Price: $5000</p>
-                <p>Features: Access to all content and exclusive features.</p>
+        <section>
+            <h2>Pricing</h2>
+            <div class="grid lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="card">
+                    <h3>Basic Plan</h3>
+                    <p>Price: $1,350</p>
+                </div>
+                <div class="card">
+                    <h3>Standard Plan</h3>
+                    <p>Price: $2,000</p>
+                </div>
+                <div class="card">
+                    <h3>Premium Plan</h3>
+                    <p>Price: $3,500</p>
+                </div>
+                <div class="card">
+                    <h3>Deluxe Plan</h3>
+                    <p>Price: $5,000</p>
+                </div>
             </div>
         </section>
     </main>
-    <footer class="premium-footer">
-        <p>&copy; 2026 Celerona. All Rights Reserved.</p>
-        <p>Contact: info@celerona.com</p>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <p>For help, contact us at support@example.com</p>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Security</h4>
+                <img src="badge1.png" alt="Security Badge 1">
+                <img src="badge2.png" alt="Security Badge 2">
+            </div>
+        </div>
     </footer>
 </body>
 </html>
