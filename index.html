@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Celerona Management • Exclusive Fan Circle</title>
+  <title>Elite Celebrity Access • Private Inner Circle</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-  <!-- Google Fonts – luxury serif + modern sans -->
+  <!-- Google Fonts – Elegant luxury combination -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,11 +23,8 @@
   <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-  <!-- Three.js -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.min.js"></script>
-
-  <!-- PayPal SDK – REPLACE with YOUR OWN client-id from developer.paypal.com -->
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID_HERE&currency=USD"></script>
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -42,20 +39,22 @@
             gold: '#d4af37',
             'gold-dark': '#b8972e',
             charcoal: '#0a0a0f',
-            surface: '#111118',
+            'surface': '#111118',
             'surface-elev': '#1a1a22',
-            regular: '#3b82f6',
-            vip: '#8b5cf6',
-            vvip: '#d4af37',
-            platinum: '#e5e7eb'
           },
           keyframes: {
-            shine: { '0%': { backgroundPosition: '200% center' }, '100%': { backgroundPosition: '-200% center' } },
-            glow:  { '0%, 100%': { boxShadow: '0 0 25px 5px rgba(212,175,55,0.2)' }, '50%': { boxShadow: '0 0 55px 18px rgba(212,175,55,0.45)' } }
+            shine: {
+              '0%':   { backgroundPosition: '200% center' },
+              '100%': { backgroundPosition: '-200% center' }
+            },
+            glow: {
+              '0%, 100%': { boxShadow: '0 0 25px 5px rgba(212,175,55,0.2)' },
+              '50%':      { boxShadow: '0 0 55px 18px rgba(212,175,55,0.45)' }
+            }
           },
           animation: {
             shine: 'shine 10s linear infinite',
-            glow:  'glow 6s ease-in-out infinite'
+            glow: 'glow 6s ease-in-out infinite'
           }
         }
       }
@@ -63,7 +62,10 @@
   </script>
 
   <style>
-    body { background: #0a0a0f; color: #e5e5e5; overflow-x: hidden; }
+    body {
+      background: #0a0a0f;
+      color: #e5e5e5;
+    }
     .gold-gradient {
       background: linear-gradient(90deg, #f0c14b, #d4af37, #f0c14b);
       -webkit-background-clip: text;
@@ -84,76 +86,86 @@
       border-color: rgba(212,175,55,0.4);
       box-shadow: 0 35px 80px -20px rgba(212,175,55,0.25);
     }
-    .price-large {
-      font-size: 4.5rem;
-      line-height: 1;
-      font-weight: 900;
-    }
-    @media (max-width: 640px) { .price-large { font-size: 3.8rem; } }
-    #three-canvas {
+    #particles-js {
       position: absolute;
-      inset: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
       z-index: 1;
-      pointer-events: none;
     }
-    .paypal-container { min-height: 140px; }
   </style>
 </head>
 <body>
 
-<!-- Navigation – Updated to Celerona Management -->
-<header class="fixed top-0 w-full z-50">
+<!-- ──────────────────────────────────────────────── -->
+<!--               Multi-page like Navigation          -->
+<!-- ──────────────────────────────────────────────── -->
+<header class="fixed top-0 w-full z-50 transition-all">
   <nav class="glass mx-4 mt-5 md:mx-12 rounded-2xl px-6 md:px-10 py-5 flex justify-between items-center shadow-2xl shadow-black/50">
     <div class="flex items-center gap-4">
-      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gold to-amber-800 flex items-center justify-center text-charcoal font-bold text-2xl shadow-lg">CM</div>
-      <span class="text-2xl md:text-3xl font-bold gold-gradient">Celerona Management</span>
+      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gold to-amber-800 flex items-center justify-center text-charcoal font-bold text-2xl shadow-lg">ECA</div>
+      <span class="text-2xl md:text-3xl font-bold gold-gradient">Elite Access</span>
     </div>
 
     <div class="hidden md:flex items-center gap-10 text-lg font-medium">
       <a href="#home" class="hover:text-gold transition">Home</a>
-      <a href="#benefits" class="hover:text-gold transition">Membership</a>
-      <a href="#tiers" class="hover:text-gold transition">Fan Cards</a>
+      <a href="#benefits" class="hover:text-gold transition">Benefits</a>
+      <a href="#tiers" class="hover:text-gold transition">Membership</a>
+      <a href="#dashboard-preview" class="hover:text-gold transition">Dashboard</a>
       <a href="#join" class="bg-gradient-to-r from-gold to-amber-700 hover:from-amber-500 hover:to-gold text-charcoal px-8 py-3.5 rounded-full font-semibold shadow-xl shadow-amber-900/50 transition-all hover:shadow-2xl">
         Join Now
       </a>
     </div>
 
-    <button class="md:hidden text-gold text-3xl"><i class="fa-solid fa-bars"></i></button>
+    <button class="md:hidden text-gold text-3xl">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </nav>
 </header>
 
-<!-- Hero – Updated branding -->
+<!-- ──────────────────────────────────────────────── -->
+<!--                  Hero with Particles              -->
+<!-- ──────────────────────────────────────────────── -->
 <section id="home" class="min-h-screen relative flex items-center justify-center overflow-hidden">
-  <canvas id="three-canvas" class="absolute inset-0 z-0"></canvas>
-  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/45 to-charcoal/90 z-10"></div>
+  <div id="particles-js" class="absolute inset-0 z-0"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/50 to-charcoal/90 z-10"></div>
 
   <div class="relative z-20 text-center px-6 max-w-6xl" data-aos="fade-up" data-aos-duration="1600">
     <div class="inline-flex mb-8 px-7 py-3 glass rounded-full text-gold text-base md:text-lg uppercase tracking-widest font-medium shadow-lg">
-      <i class="fa-solid fa-crown mr-3 text-xl"></i> Private • Exclusive • Elite
+      <i class="fa-solid fa-crown mr-3 text-xl"></i> Private • Elite • Discreet
     </div>
 
     <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl serif-heading font-bold leading-tight mb-10 gold-gradient animate-glow">
-      Celerona Management<br/>Inner Circle
+      Welcome to the Inner Circle
     </h1>
 
     <p class="text-xl sm:text-2xl md:text-3xl max-w-4xl mx-auto mb-14 leading-relaxed opacity-95">
-      Premium fan access to global celebrities. Private interactions. Exclusive content.<br class="hidden md:block"/>
-      <span class="text-gold font-medium">Managed with distinction.</span>
+      Intimate access to world-class celebrities. Private messages. Exclusive content. Events few will ever experience.
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-6 justify-center mt-10">
+    <div class="flex flex-col sm:flex-row gap-6 justify-center">
       <a href="#tiers" class="bg-gradient-to-r from-gold to-amber-700 hover:from-amber-500 hover:to-gold text-charcoal px-12 py-6 rounded-full text-xl md:text-2xl font-bold transition-all duration-500 shadow-2xl shadow-amber-900/60 hover:shadow-3xl hover:scale-[1.04]">
-        View Fan Cards →
+        View Memberships →
+      </a>
+      <a href="#dashboard-preview" class="glass px-12 py-6 rounded-full text-xl font-medium hover:bg-white/8 transition-all">
+        See Member Dashboard
       </a>
     </div>
   </div>
+
+  <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-70 z-20">
+    <i class="fa-solid fa-chevron-down text-gold text-4xl"></i>
+  </div>
 </section>
 
-<!-- Benefits Section -->
+<!-- ──────────────────────────────────────────────── -->
+<!--                  Benefits Section                 -->
+<!-- ──────────────────────────────────────────────── -->
 <section id="benefits" class="py-24 md:py-40 relative">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <h2 class="text-5xl md:text-6xl lg:text-7xl serif-heading font-bold text-center mb-24 gold-gradient" data-aos="fade-up">
-      Privileges of Celerona Membership
+      Privileges Reserved for Members
     </h2>
 
     <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
@@ -163,7 +175,7 @@
         </div>
         <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center">Exclusive Content Vault</h3>
         <p class="text-gray-300 text-lg md:text-xl leading-relaxed text-center">
-          Unreleased videos, personal archives, behind-the-scenes moments — never made public.
+          Unreleased videos, personal stories, live recordings — content never made public.
         </p>
       </div>
 
@@ -171,9 +183,9 @@
         <div class="w-20 h-20 mx-auto mb-10 rounded-2xl bg-gradient-to-br from-gold/25 to-amber-800/25 flex items-center justify-center">
           <i class="fa-solid fa-user-tie text-gold text-4xl"></i>
         </div>
-        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center">Direct Celebrity Connection</h3>
+        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center">Direct Celebrity Access</h3>
         <p class="text-gray-300 text-lg md:text-xl leading-relaxed text-center">
-          Private messages, voice notes, live Q&As — real interaction managed by personal managers or Celerona.
+          Private messages, voice notes, live Q&As — real interaction with icons.
         </p>
       </div>
 
@@ -181,106 +193,163 @@
         <div class="w-20 h-20 mx-auto mb-10 rounded-2xl bg-gradient-to-br from-gold/25 to-amber-800/25 flex items-center justify-center">
           <i class="fa-solid fa-star text-gold text-4xl"></i>
         </div>
-        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center">VIP Priority Access</h3>
+        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center">VIP Priority & Events</h3>
         <p class="text-gray-300 text-lg md:text-xl leading-relaxed text-center">
-          First access to events, meetups, virtual gatherings and limited-edition releases and Private messages, voice notes, live Q&As — real interaction.
+          First access to premieres, meet-and-greets, virtual events and limited drops.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Fan Cards Section – with real PayPal buttons & tier colors -->
-<section id="tiers" class="py-24 md:py-40 relative bg-gradient-to-b from-charcoal to-black/70">
+<!-- ──────────────────────────────────────────────── -->
+<!--               Membership Tiers                    -->
+<!-- ──────────────────────────────────────────────── -->
+<section id="tiers" class="py-24 md:py-40 bg-gradient-to-b from-charcoal to-black/70">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <h2 class="text-5xl md:text-6xl lg:text-7xl serif-heading font-bold text-center mb-20 gold-gradient" data-aos="fade-up">
-      Choose Your Fan Card
+    <h2 class="text-5xl md:text-6xl lg:text-7xl serif-heading font-bold text-center mb-24 gold-gradient" data-aos="fade-up">
+      Choose Your Tier
     </h2>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
-      <!-- REGULAR FAN CARD – Blue -->
-      <div class="glass rounded-3xl p-8 md:p-10 card-hover flex flex-col border-t-4 border-regular" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center text-regular">REGULAR FAN CARD</h3>
-        <div class="text-center mb-10">
-          <div class="price-large text-regular">$1,350</div>
-          <div class="text-xl text-gray-400 mt-1">per year</div>
-        </div>
-        <ul class="space-y-4 mb-10 flex-grow text-gray-300 text-base md:text-lg">
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-regular"></i> Core private content library</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-regular"></i> Monthly newsletter & updates</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-regular"></i> Community forum access</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-regular"></i> Digital fan badge</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-regular"></i> Early content previews</li>
+      <div class="glass rounded-3xl p-10 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-3xl serif-heading font-semibold mb-4">Signature</h3>
+        <div class="text-5xl md:text-6xl font-bold gold-gradient my-8">$1,350</div>
+        <p class="text-gray-400 mb-10 text-lg">/ year</p>
+        <ul class="space-y-5 mb-12 flex-grow text-gray-300 text-lg">
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold"></i> Core private library</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold"></i> Monthly newsletter</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold"></i> Community forum</li>
         </ul>
-        <div class="mt-auto paypal-container" id="paypal-regular"></div>
+        <button class="mt-auto bg-surface-elev hover:bg-surface py-5 rounded-2xl font-semibold transition">Select</button>
       </div>
 
-      <!-- VIP FAN CARD – Indigo -->
-      <div class="glass rounded-3xl p-8 md:p-10 card-hover flex flex-col border-t-4 border-vip" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center text-vip">VIP FAN CARD</h3>
-        <div class="text-center mb-10">
-          <div class="price-large text-vip">$3,000</div>
-          <div class="text-xl text-gray-400 mt-1">per year</div>
-        </div>
-        <ul class="space-y-4 mb-10 flex-grow text-gray-300 text-base md:text-lg">
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-vip"></i> All Regular Fan Card benefits</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-vip"></i> Exclusive video archives</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-vip"></i> Monthly live Q&A sessions</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-vip"></i> Exclusive wallpapers & assets</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-vip"></i> Chance for shoutouts</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-vip"></i> Ad-free experience</li>
+      <div class="glass rounded-3xl p-10 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-3xl serif-heading font-semibold mb-4">Inner Circle</h3>
+        <div class="text-5xl md:text-6xl font-bold gold-gradient my-8">$3,000</div>
+        <p class="text-gray-400 mb-10 text-lg">/ year</p>
+        <ul class="space-y-5 mb-12 flex-grow text-gray-300 text-lg">
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold"></i> All Signature +</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold"></i> Exclusive archives</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold"></i> Monthly live Q&A</li>
         </ul>
-        <div class="mt-auto paypal-container" id="paypal-vip"></div>
+        <button class="mt-auto bg-indigo-950/70 hover:bg-indigo-900/70 py-5 rounded-2xl font-semibold transition">Select</button>
       </div>
 
-      <!-- VVIP FAN CARD – Gold -->
-      <div class="glass rounded-3xl p-10 md:p-12 card-hover flex flex-col border-t-4 border-vvip shadow-2xl shadow-amber-900/50 animate-glow scale-[1.04]" data-aos="zoom-in" data-aos-delay="300">
-        <div class="absolute -top-5 right-8 bg-gold text-charcoal px-6 py-2 rounded-full text-sm md:text-base font-bold shadow-md">Most Popular</div>
-        <h3 class="text-4xl serif-heading font-bold mb-6 text-center text-vvip">VVIP FAN CARD</h3>
-        <div class="text-center mb-10">
-          <div class="price-large text-vvip">$5,000</div>
-          <div class="text-xl text-gray-300 mt-1">per year</div>
-        </div>
-        <ul class="space-y-5 mb-12 flex-grow text-gray-200 text-lg md:text-xl">
-          <li class="flex items-center gap-3"><i class="fa-solid fa-star text-vvip text-xl"></i> All VIP Fan Card benefits</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-star text-vvip text-xl"></i> Personal celebrity replies</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-star text-vvip text-xl"></i> Priority event access</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-star text-vvip text-xl"></i> Signed digital collectibles</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-star text-vvip text-xl"></i> Priority live chat access</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-star text-vvip text-xl"></i> Exclusive merch drops</li>
+      <div class="glass rounded-3xl p-12 card-hover flex flex-col border-2 border-gold shadow-2xl shadow-amber-900/50 animate-glow scale-[1.04]" data-aos="zoom-in" data-aos-delay="300">
+        <div class="absolute -top-5 right-8 bg-gold text-charcoal px-6 py-2 rounded-full text-base font-bold shadow-md">Most Exclusive</div>
+        <h3 class="text-4xl serif-heading font-bold gold-gradient mb-4">Velvet Tier</h3>
+        <div class="text-6xl md:text-7xl font-black gold-gradient my-8">$5,000</div>
+        <p class="text-gray-300 mb-10 text-xl">/ year</p>
+        <ul class="space-y-6 mb-14 flex-grow text-gray-200 text-xl">
+          <li class="flex items-center gap-4"><i class="fa-solid fa-star text-gold text-2xl"></i> All Inner +</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-star text-gold text-2xl"></i> Personal replies</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-star text-gold text-2xl"></i> Priority events</li>
         </ul>
-        <div class="mt-auto paypal-container" id="paypal-vvip"></div>
+        <button class="mt-auto bg-gradient-to-r from-gold to-amber-700 hover:from-amber-500 hover:to-gold text-charcoal py-6 rounded-2xl font-bold text-xl transition shadow-2xl shadow-amber-900/50">
+          Join Velvet
+        </button>
       </div>
 
-      <!-- PLATINUM FAN CARD – Platinum -->
-      <div class="glass rounded-3xl p-8 md:p-10 card-hover flex flex-col border-t-4 border-platinum" data-aos="fade-up" data-aos-delay="400">
-        <h3 class="text-3xl md:text-4xl serif-heading font-semibold mb-6 text-center text-platinum">PLATINUM FAN CARD</h3>
-        <div class="text-center mb-10">
-          <div class="price-large text-platinum">$10,000+</div>
-          <div class="text-xl text-gray-400 mt-1">per year</div>
-        </div>
-        <ul class="space-y-4 mb-10 flex-grow text-gray-300 text-base md:text-lg">
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-platinum"></i> All VVIP Fan Card benefits</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-platinum"></i> Private 1-on-1 video sessions</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-platinum"></i> Bespoke fan experiences</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-platinum"></i> Physical merchandise shipments</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-platinum"></i> Name in credits (select projects)</li>
-          <li class="flex items-center gap-3"><i class="fa-solid fa-check text-platinum"></i> Personal concierge support</li>
+      <div class="glass rounded-3xl p-10 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-3xl serif-heading font-semibold mb-4 gold-gradient">Legacy</h3>
+        <div class="text-5xl md:text-6xl font-bold gold-gradient my-8">$5,000+</div>
+        <p class="text-gray-400 mb-10 text-lg">/ year</p>
+        <ul class="space-y-5 mb-12 flex-grow text-gray-300 text-lg">
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold text-xl"></i> All Velvet +</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold text-xl"></i> Private 1:1</li>
+          <li class="flex items-center gap-4"><i class="fa-solid fa-check text-gold text-xl"></i> Custom experiences</li>
         </ul>
-        <div class="mt-auto paypal-container" id="paypal-platinum"></div>
+        <button class="mt-auto bg-amber-900/60 hover:bg-amber-800/60 py-5 rounded-2xl font-semibold transition">Inquire</button>
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- ──────────────────────────────────────────────── -->
+<!--             Member Dashboard Preview              -->
+<!-- ──────────────────────────────────────────────── -->
+<section id="dashboard-preview" class="py-24 md:py-40 relative bg-black/70">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <h2 class="text-5xl md:text-6xl lg:text-7xl serif-heading font-bold text-center mb-20 gold-gradient" data-aos="fade-up">
+      Member Dashboard Preview
+    </h2>
+
+    <div class="glass rounded-3xl overflow-hidden shadow-2xl shadow-amber-900/40" data-aos="fade-up" data-aos-delay="200">
+      <div class="bg-gradient-to-r from-charcoal to-surface-elev p-8 md:p-12 border-b border-gold/30">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div>
+            <h3 class="text-3xl md:text-4xl serif-heading font-bold gold-gradient">Welcome back, [Member Name]</h3>
+            <p class="text-gray-400 mt-2 text-lg">Velvet Tier • Member since Jan 2026</p>
+          </div>
+          <div class="flex gap-4">
+            <button class="bg-gold hover:bg-amber-500 text-charcoal px-6 py-3 rounded-full font-semibold transition">Quick Access</button>
+            <button class="border border-gold/60 hover:bg-gold/10 px-6 py-3 rounded-full transition">Settings</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-8 md:p-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass p-8 rounded-2xl">
+          <h4 class="text-2xl font-semibold mb-4 flex items-center gap-3"><i class="fa-solid fa-video text-gold"></i> Latest Exclusive</h4>
+          <div class="aspect-video bg-surface-elev rounded-xl mb-4 flex items-center justify-center">
+            <i class="fa-solid fa-play-circle text-6xl text-gold/70"></i>
+          </div>
+          <p class="text-gray-300">Behind-the-scenes with [Celebrity Name] – 12 min</p>
+        </div>
+
+        <div class="glass p-8 rounded-2xl">
+          <h4 class="text-2xl font-semibold mb-4 flex items-center gap-3"><i class="fa-solid fa-comment-dots text-gold"></i> Recent Messages</h4>
+          <div class="space-y-4">
+            <div class="bg-surface-elev p-4 rounded-xl">
+              <p class="font-medium">[Celebrity] • 2h ago</p>
+              <p class="text-gray-400 text-sm">Thank you for the support – new drop coming soon...</p>
+            </div>
+            <div class="bg-surface-elev p-4 rounded-xl">
+              <p class="font-medium">Team • Yesterday</p>
+              <p class="text-gray-400 text-sm">Your VIP ticket for [Event] is confirmed</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass p-8 rounded-2xl lg:col-span-1 md:col-span-2">
+          <h4 class="text-2xl font-semibold mb-4 flex items-center gap-3"><i class="fa-solid fa-calendar-days text-gold"></i> Upcoming Events</h4>
+          <div class="space-y-4">
+            <div class="bg-surface-elev p-5 rounded-xl flex justify-between items-center">
+              <div>
+                <p class="font-medium"> Meet & Greet</p>
+                <p class="text-gray-400 text-sm">March 15, 2026 • 8:00 PM</p>
+              </div>
+              <button class="bg-gold/20 hover:bg-gold/30 px-5 py-2 rounded-lg text-sm">Join</button>
+            </div>
+            <div class="bg-surface-elev p-5 rounded-xl flex justify-between items-center">
+              <div>
+                <p class="font-medium">Private Premiere</p>
+                <p class="text-gray-400 text-sm">April 2, 2026 • Invite Only</p>
+              </div>
+              <button class="bg-gold/20 hover:bg-gold/30 px-5 py-2 rounded-lg text-sm">RSVP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center mt-12 text-gray-400 text-lg italic">
+      This is a preview — full dashboard unlocks upon membership activation
+    </p>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────── -->
+<!--                     Footer                        -->
+<!-- ──────────────────────────────────────────────── -->
 <footer class="border-t border-white/5 py-20 text-center text-gray-500 bg-black/80">
   <div class="max-w-7xl mx-auto px-6">
-    <p class="text-xl mb-6">Celerona Management • Exclusive Fan Membership • 2026</p>
+    <p class="text-xl mb-6">Elite Celebrity Access • Private • 2026</p>
     <div class="flex justify-center gap-12 text-lg">
-      <a href="#" class="hover:text-gold transition">Privacy Policy</a>
-      <a href="#" class="hover:text-gold transition">Terms of Service</a>
+      <a href="#" class="hover:text-gold transition">Privacy</a>
+      <a href="#" class="hover:text-gold transition">Terms</a>
       <a href="#" class="hover:text-gold transition">Support</a>
     </div>
   </div>
@@ -288,119 +357,51 @@
 
 <script>
 // ────────────────────────────────────────────────
-//        Three.js – Floating Golden Orbs
+//        Particles.js – luxury floating particles
 // ────────────────────────────────────────────────
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0a0a0f);
-
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 18;
-
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), antialias: true, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-
-scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-const pointLight = new THREE.PointLight(0xffffff, 1.8, 100);
-pointLight.position.set(5, 5, 10);
-scene.add(pointLight);
-
-const goldMaterial = new THREE.MeshPhysicalMaterial({
-  color: 0xd4af37,
-  metalness: 0.95,
-  roughness: 0.08,
-  clearcoat: 1.0,
-  clearcoatRoughness: 0.1,
-  envMapIntensity: 1.5
-});
-
-const orbs = [];
-for (let i = 0; i < 20; i++) {
-  const radius = THREE.MathUtils.randFloat(0.6, 1.8);
-  const orb = new THREE.Mesh(new THREE.SphereGeometry(radius, 32, 32), goldMaterial);
-  orb.position.set(
-    THREE.MathUtils.randFloatSpread(30),
-    THREE.MathUtils.randFloatSpread(30),
-    THREE.MathUtils.randFloatSpread(20) - 10
-  );
-  orb.userData = {
-    speed: THREE.MathUtils.randFloat(0.2, 0.7),
-    phase: Math.random() * Math.PI * 2,
-    rotSpeed: THREE.MathUtils.randFloat(0.3, 1.2)
-  };
-  scene.add(orb);
-  orbs.push(orb);
-}
-
-function animate() {
-  requestAnimationFrame(animate);
-  const time = performance.now() * 0.001;
-  orbs.forEach(orb => {
-    const { speed, phase, rotSpeed } = orb.userData;
-    orb.position.y += Math.sin(time * speed + phase) * 0.015;
-    orb.position.x += Math.cos(time * speed * 0.7 + phase) * 0.01;
-    orb.rotation.x += rotSpeed * 0.003;
-    orb.rotation.y += rotSpeed * 0.004;
-    orb.position.z = Math.sin(time * 0.4 + phase) * 3;
-  });
-  renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+particlesJS('particles-js', {
+  particles: {
+    number: { value: 60, density: { enable: true, value_area: 800 } },
+    color: { value: '#d4af37' },
+    shape: { type: 'circle' },
+    opacity: { value: 0.4, random: true },
+    size: { value: 3, random: true },
+    line_linked: { enable: true, distance: 150, color: '#d4af37', opacity: 0.2, width: 1 },
+    move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+  },
+  interactivity: {
+    detect_on: 'canvas',
+    events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+    modes: { grab: { distance: 220, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+  },
+  retina_detect: true
 });
 
 // ────────────────────────────────────────────────
-//        PayPal Buttons – one per tier
+//        Lenis smooth scroll
 // ────────────────────────────────────────────────
-function createPaypalButton(containerId, amount, description) {
-  paypal.Buttons({
-    style: {
-      shape: 'rect',
-      color: 'gold',
-      layout: 'vertical',
-      label: 'paypal'
-    },
-    createOrder: (data, actions) => {
-      return actions.order.create({
-        purchase_units: [{
-          amount: { value: amount, currency_code: 'USD' },
-          description: description
-        }]
-      });
-    },
-    onApprove: (data, actions) => {
-      return actions.order.capture().then(details => {
-        alert(`Thank you ${details.payer.name.given_name}! Your payment for ${description} has been received.`);
-        // In production → call your backend here to activate membership
-      });
-    },
-    onError: err => {
-      console.error('PayPal Error:', err);
-      alert('Payment could not be processed. Please try again or contact support.');
-    }
-  }).render(`#${containerId}`);
+const lenis = new Lenis({
+  duration: 1.8,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
-
-// Initialize PayPal buttons
-createPaypalButton('paypal-regular',   '1350.00', 'Celerona Management - REGULAR FAN CARD - $1,350/year');
-createPaypalButton('paypal-vip',       '3000.00', 'Celerona Management - VIP FAN CARD - $3,000/year');
-createPaypalButton('paypal-vvip',      '5000.00', 'Celerona Management - VVIP FAN CARD - $5,000/year');
-createPaypalButton('paypal-platinum',  '10000.00','Celerona Management - PLATINUM FAN CARD - $10,000+/year');
-
-// ────────────────────────────────────────────────
-//        Lenis & AOS
-// ────────────────────────────────────────────────
-const lenis = new Lenis({ duration: 1.8, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 
-AOS.init({ duration: 1400, once: true, easing: 'ease-out-cubic', offset: 120 });
+// ────────────────────────────────────────────────
+//        AOS
+// ────────────────────────────────────────────────
+AOS.init({
+  duration: 1400,
+  once: true,
+  easing: 'ease-out-cubic',
+  offset: 120
+});
 </script>
 
 </body>
 </html>
-
